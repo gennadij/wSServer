@@ -1,0 +1,69 @@
+cabal-version: 1.12
+
+-- This file has been generated from package.yaml by hpack version 0.33.0.
+--
+-- see: https://github.com/sol/hpack
+--
+-- hash: 2cc2b4134e0b89dba380e04cf504e68778a4906e5caf929b19805b3a2bfb35c7
+
+name:           wSServer
+version:        0.1.0.0
+description:    Please see the README on GitHub at <https://github.com/githubuser/wSServer#readme>
+homepage:       https://github.com/githubuser/wSServer#readme
+bug-reports:    https://github.com/githubuser/wSServer/issues
+author:         Author name here
+maintainer:     example@example.com
+copyright:      2021 Author name here
+license:        BSD3
+license-file:   LICENSE
+build-type:     Simple
+extra-source-files:
+    README.md
+    ChangeLog.md
+
+source-repository head
+  type: git
+  location: https://github.com/githubuser/wSServer
+
+library
+  exposed-modules:
+      Lib
+      WServer
+  other-modules:
+      Paths_wSServer
+  hs-source-dirs:
+      src
+  build-depends:
+      base >=4.7 && <5
+    , text
+    , websockets
+  default-language: Haskell2010
+
+executable wSServer-exe
+  main-is: Main.hs
+  other-modules:
+      Paths_wSServer
+  hs-source-dirs:
+      app
+  ghc-options: -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      base >=4.7 && <5
+    , text
+    , wSServer
+    , websockets
+  default-language: Haskell2010
+
+test-suite wSServer-test
+  type: exitcode-stdio-1.0
+  main-is: Spec.hs
+  other-modules:
+      Paths_wSServer
+  hs-source-dirs:
+      test
+  ghc-options: -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      base >=4.7 && <5
+    , text
+    , wSServer
+    , websockets
+  default-language: Haskell2010

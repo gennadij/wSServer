@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 2cc2b4134e0b89dba380e04cf504e68778a4906e5caf929b19805b3a2bfb35c7
+-- hash: a3ae66f70def5cc8f8b3a52fabcb7d99dbed75813bcae942be3db766a43d6f73
 
 name:           wSServer
 version:        0.1.0.0
@@ -33,6 +33,7 @@ library
       Paths_wSServer
   hs-source-dirs:
       src
+  default-extensions: OverloadedStrings
   build-depends:
       base >=4.7 && <5
     , text

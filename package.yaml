@@ -25,6 +25,8 @@ dependencies:
 - websockets
 library:
   source-dirs: src
+  default-extensions:
+    - OverloadedStrings
 
 executables:
   wSServer-exe:

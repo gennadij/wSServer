@@ -23,6 +23,8 @@ dependencies:
 - base >= 4.7 && < 5
 - text
 - websockets
+- aeson
+
 library:
   source-dirs: src
   default-extensions:
@@ -40,6 +42,7 @@ executables:
     - wSServer
     - text
     - websockets
+    - aeson
 
 tests:
   wSServer-test:

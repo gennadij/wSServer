@@ -1,5 +1,6 @@
 module WServer(runServer) where
 
+import Data.Aeson
 import Data.Char (isPunctuation, isSpace)
 import Data.Monoid (mappend)
 import Data.Text (Text)
@@ -18,6 +19,13 @@ CalcExactRoot
   <-- { "jsonrpc": "2.0", "result": [2, 3], "id": 2}
 -}
 import qualified Network.WebSockets as WS
+
+data Req = Req { 
+      reqId :: String
+  , jsonrpc :: String
+  ,  method :: String
+  ,  params :: Maybe Value
+} deriving (Show, Eq)
 
 type Client = (Text, WS.Connection)
 

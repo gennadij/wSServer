@@ -1,5 +1,6 @@
 module WServer(runServer) where
 
+import Data.Aeson
 import Data.Char (isPunctuation, isSpace)
 import Data.Monoid (mappend)
 import Data.Text (Text)
@@ -8,6 +9,8 @@ import Control.Monad (forM_, forever)
 import Control.Concurrent (MVar, newMVar, modifyMVar_, modifyMVar, readMVar)
 import qualified Data.Text as T
 import qualified Data.Text.IO as T
+
+import qualified Network.WebSockets as WS
 {-
 JSON-RPC
 Client anmeldung
@@ -17,7 +20,6 @@ CalcExactRoot
   --> { "jsonrpc": "2.0", "method": "calcExactRoot", "params": {"radicand": 12}, "id": 2}
   <-- { "jsonrpc": "2.0", "result": [2, 3], "id": 2}
 -}
-import qualified Network.WebSockets as WS
 
 type Client = (Text, WS.Connection)
 

@@ -1,6 +1,8 @@
 module WServer(runServer) where
 
 import Data.Aeson
+import qualified Data.ByteString.Lazy.Char8 as BS
+
 import Data.Char (isPunctuation, isSpace)
 import Data.Monoid (mappend)
 import Data.Text (Text)
@@ -26,6 +28,19 @@ data Req = Req {
   ,  method :: String
   ,  params :: Maybe Value
 } deriving (Show, Eq)
+
+instance FromJSON Req where
+  parseJSON (Object v) = Req <$>
+                        v .: "id" <*>
+                        v .: "jsonrpc" <*>
+                        v .: "method" <*>
+                        v .: "params"
+  parseJSON _          = mzero
+
+data Resp = OkResp String Value
+
+instance ToJSON Resp where
+  toJSON (OkResp rid result) = object ["jsonrpc" .= BS.pack "2.0" , "id" .= rid, "result" .= result ]
 
 type Client = (Text, WS.Connection)
 

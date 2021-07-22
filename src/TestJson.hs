@@ -36,7 +36,7 @@ reqPRC :: BS.ByteString
 reqPRC = "{\"jsonrpc\": \"2.0\", \"method\": \"register\", \"params\": {\"clientId\": 123452}, \"id\": \"1\"}"
 
 instance ToJSON Resp where
-  toJSON (OkResp rid result) = object [ "id" .= rid, "result" .= result ]
+  toJSON (OkResp rid result) = object [ "jsonrpc" .= rid , "id" .= rid, "result" .= result ]
 
 printReq :: Either String Req
 printReq = eitherDecode reqPRC 

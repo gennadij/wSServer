@@ -25,6 +25,8 @@ dependencies:
 - websockets
 - aeson
 - bytestring
+- attoparsec
+- vector
 
 library:
   source-dirs: src
@@ -46,6 +48,8 @@ executables:
     - websockets
     - aeson
     - bytestring
+    - attoparsec
+    - vector
 
 tests:
   wSServer-test:

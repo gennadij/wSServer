@@ -1,11 +1,8 @@
 module WServer(runServer) where
 
 import Data.Aeson
-<<<<<<< HEAD
-=======
 import qualified Data.ByteString.Lazy.Char8 as BS
 
->>>>>>> dd4d658e3419436ec2a17ccbd3686ad449bcc3b0
 import Data.Char (isPunctuation, isSpace)
 import Data.Monoid (mappend)
 import Data.Text (Text)

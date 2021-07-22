@@ -5,5 +5,7 @@ import WServer
 import TestJson
 
 main :: IO ()
-main = print printReq
+main = do 
+    print printReq
+    print printRes
 -- main = WServer.runServer

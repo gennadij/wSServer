@@ -1,4 +1,4 @@
-module TestJson(printReq) where
+module TestJson(printReq, printRes) where
 
 import Data.Aeson
 import qualified Data.ByteString.Lazy.Char8 as BS
@@ -30,14 +30,19 @@ instance FromJSON Req where
                         v .: "method" <*>
                         v .: "params"
 
-data Resp = OkResp String Value
+data Resp = OkResp String String deriving Show
 
 reqPRC :: BS.ByteString
 reqPRC = "{\"jsonrpc\": \"2.0\", \"method\": \"register\", \"params\": {\"clientId\": 123452}, \"id\": \"1\"}"
 
---instance ToJSON Resp where
---  toJSON (OkResp rid result) = object ["jsonrpc" .= BS.pack "2.0" , "id" .= rid, "result" .= result ]
-
+instance ToJSON Resp where
+  toJSON (OkResp rid result) = object [ "id" .= rid, "result" .= result ]
 
 printReq :: Either String Req
 printReq = eitherDecode reqPRC 
+
+resRPC :: Resp
+resRPC = OkResp "1" "test"
+
+printRes :: BS.ByteString
+printRes = encode $ OkResp "1" "test"

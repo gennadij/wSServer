@@ -11,36 +11,11 @@ import Control.Monad (forM_, forever)
 import Control.Concurrent (MVar, newMVar, modifyMVar_, modifyMVar, readMVar)
 import qualified Data.Text as T
 import qualified Data.Text.IO as T
-{-
-JSON-RPC
-Client anmeldung
-  --> { "jsonrpc": "2.0", "method": "register", "params": {"clientId": 12345}, "id": 1}
-  <-- { "jsonrpc": "2.0", "result": 12345, "id": 2}
-CalcExactRoot
-  --> { "jsonrpc": "2.0", "method": "calcExactRoot", "params": {"radicand": 12}, "id": 2}
-  <-- { "jsonrpc": "2.0", "result": [2, 3], "id": 2}
--}
+
 import qualified Network.WebSockets as WS
 
-data Req = Req { 
-      reqId :: String
-  , jsonrpc :: String
-  ,  method :: String
-  ,  params :: Maybe Value
-} deriving (Show, Eq)
-
-instance FromJSON Req where
-  parseJSON (Object v) = Req <$>
-                        v .: "id" <*>
-                        v .: "jsonrpc" <*>
-                        v .: "method" <*>
-                        v .: "params"
-  parseJSON _          = mzero
-
-data Resp = OkResp String Value
-
-instance ToJSON Resp where
-  toJSON (OkResp rid result) = object ["jsonrpc" .= BS.pack "2.0" , "id" .= rid, "result" .= result ]
+class Calc a where
+  add :: a -> Integer -> Integer -> Integer
 
 type Client = (Text, WS.Connection)
 

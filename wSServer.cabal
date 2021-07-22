@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 71acfc30cbd137998fd482167e6ef8eccaa2c6ce3dd09c6d9d5c6ef0cc8a433e
+-- hash: 396b141506bb1b84a67ba8967ef9db9599324ba992e443cb45a2610e20f607d5
 
 name:           wSServer
 version:        0.1.0.0
@@ -28,15 +28,17 @@ source-repository head
 library
   exposed-modules:
       Lib
+      TestJson
       WServer
   other-modules:
       Paths_wSServer
   hs-source-dirs:
       src
-  default-extensions: OverloadedStrings
+  default-extensions: OverloadedStrings DeriveGeneric
   build-depends:
       aeson
     , base >=4.7 && <5
+    , bytestring
     , text
     , websockets
   default-language: Haskell2010
@@ -51,6 +53,7 @@ executable wSServer-exe
   build-depends:
       aeson
     , base >=4.7 && <5
+    , bytestring
     , text
     , wSServer
     , websockets
@@ -67,6 +70,7 @@ test-suite wSServer-test
   build-depends:
       aeson
     , base >=4.7 && <5
+    , bytestring
     , text
     , wSServer
     , websockets

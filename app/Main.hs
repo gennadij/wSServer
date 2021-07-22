@@ -2,6 +2,8 @@ module Main where
 
 import Lib
 import WServer
+import TestJson
 
 main :: IO ()
-main = WServer.runServer
+main = print printReq
+-- main = WServer.runServer

@@ -23,10 +23,14 @@ dependencies:
 - base >= 4.7 && < 5
 - text
 - websockets
+- aeson
+- bytestring
+
 library:
   source-dirs: src
   default-extensions:
     - OverloadedStrings
+    - DeriveGeneric
 
 executables:
   wSServer-exe:
@@ -40,6 +44,8 @@ executables:
     - wSServer
     - text
     - websockets
+    - aeson
+    - bytestring
 
 tests:
   wSServer-test:

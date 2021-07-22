@@ -1,6 +1,11 @@
 module WServer(runServer) where
 
 import Data.Aeson
+<<<<<<< HEAD
+=======
+import qualified Data.ByteString.Lazy.Char8 as BS
+
+>>>>>>> dd4d658e3419436ec2a17ccbd3686ad449bcc3b0
 import Data.Char (isPunctuation, isSpace)
 import Data.Monoid (mappend)
 import Data.Text (Text)
@@ -11,15 +16,9 @@ import qualified Data.Text as T
 import qualified Data.Text.IO as T
 
 import qualified Network.WebSockets as WS
-{-
-JSON-RPC
-Client anmeldung
-  --> { "jsonrpc": "2.0", "method": "register", "params": {"clientId": 12345}, "id": 1}
-  <-- { "jsonrpc": "2.0", "result": 12345, "id": 2}
-CalcExactRoot
-  --> { "jsonrpc": "2.0", "method": "calcExactRoot", "params": {"radicand": 12}, "id": 2}
-  <-- { "jsonrpc": "2.0", "result": [2, 3], "id": 2}
--}
+
+class Calc a where
+  add :: a -> Integer -> Integer -> Integer
 
 type Client = (Text, WS.Connection)
 

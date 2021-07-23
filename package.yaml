@@ -27,6 +27,7 @@ dependencies:
 - bytestring
 - attoparsec
 - vector
+- containers
 
 library:
   source-dirs: src
@@ -50,6 +51,7 @@ executables:
     - bytestring
     - attoparsec
     - vector
+    - containers
 
 tests:
   wSServer-test:

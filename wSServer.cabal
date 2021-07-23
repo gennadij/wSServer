@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 7ef719a3cdc827546c30a15cc9c93f03e1bd2b36ef6d3be2f0e6b6342c99ec71
+-- hash: d0c061a102cd5d8591a644f1936fa09c365aecefb26c48088b8c8d9367da5e18
 
 name:           wSServer
 version:        0.1.0.0
@@ -41,6 +41,7 @@ library
     , attoparsec
     , base >=4.7 && <5
     , bytestring
+    , containers
     , text
     , vector
     , websockets
@@ -58,6 +59,7 @@ executable wSServer-exe
     , attoparsec
     , base >=4.7 && <5
     , bytestring
+    , containers
     , text
     , vector
     , wSServer
@@ -77,6 +79,7 @@ test-suite wSServer-test
     , attoparsec
     , base >=4.7 && <5
     , bytestring
+    , containers
     , text
     , vector
     , wSServer
